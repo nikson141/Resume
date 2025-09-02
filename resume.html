@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nika Kvartskhava - Game Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #34495e;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .title {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .contact-item::before {
+            content: '●';
+            color: #3498db;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .profile-text {
+            text-align: justify;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .company {
+            color: #3498db;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .duration {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .job-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .job-description ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .education-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .degree {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .school {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .edu-duration {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .languages {
+            display: grid;
+            gap: 10px;
+        }
+
+        .language-item {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .language-level {
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            margin-top: 15px;
+        }
+
+        .portfolio-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .sidebar, .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <h1 class="name">NIKA KVARTSKHAVA</h1>
+            <h2 class="title">Game Developer</h2>
+            <div class="contact-info">
+                <div class="contact-item">+995 597-29-51-32</div>
+                <div class="contact-item">nika.qvarcxava15@gmail.com</div>
+                <div class="contact-item">Tbilisi, Georgia</div>
+            </div>
+            <a href="https://nikson141.github.io/Portfolio/" class="portfolio-link" target="_blank">View Portfolio</a>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h3 class="section-title">Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-name">Unity Engine</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">C# Programming</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">After Effects</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Aseprite</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Audacity</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Git Desktop</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Languages</h3>
+                    <div class="languages">
+                        <div class="language-item">
+                            <span class="language-name">Georgian</span>
+                            <span class="language-level">Native</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">English</span>
+                            <span class="language-level">Intermediate</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Education</h3>
+                    <div class="education-item">
+                        <div class="degree">Game Development</div>
+                        <div class="school">IT Step Academy Georgia</div>
+                        <div class="edu-duration">2021 - 2023</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">Full-Stack Development</div>
+                        <div class="school">IT Step Academy Georgia</div>
+                        <div class="edu-duration">2021 - 2023</div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h3 class="section-title">Professional Profile</h3>
+                    <p class="profile-text">
+                        Passionate Game Developer with expertise in Unity Engine and C# programming, specializing in PC and mobile game development. With over a year of hands-on experience in Unity, I have developed a strong foundation in game mechanics, AI systems, and immersive gameplay experiences. My diverse skill set extends beyond programming to include audio manipulation, visual effects, and technical problem-solving.
+                    </p>
+                    <p class="profile-text">
+                        I am committed to creating high-quality games and actively contribute to the gaming community through my GitHub repositories and itch.io portfolio. My experience as a Lecture Assistant has enhanced my ability to communicate complex technical concepts and collaborate effectively with teams. I thrive on new challenges and am particularly drawn to innovative projects in the gaming industry.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Professional Experience</h3>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Game Developer</div>
+                                <div class="company">HellHame Studio</div>
+                            </div>
+                            <div class="duration">2024 - Present</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Leading development of a large-scale horror game for PC, responsible for core gameplay mechanics and AI systems</li>
+                                <li>Implementing advanced Unity features including custom physics, animation blending, and environment interactions</li>
+                                <li>Collaborating on narrative design, sound effects, and visual storytelling to create immersive horror experiences</li>
+                                <li>Designing atmosphere and tension-building mechanics to deliver engaging player experiences</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Lecture Assistant</div>
+                                <div class="company">GEO LAB</div>
+                            </div>
+                            <div class="duration">2024 - 2025</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Assisted lead lecturers in teaching Unity and C# game development to students</li>
+                                <li>Guided students through programming concepts, level building, animation creation, and physics implementation</li>
+                                <li>Conducted hands-on workshops covering debugging, game mechanics, and project setup</li>
+                                <li>Developed strong mentoring and technical communication skills while expanding personal expertise</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Freelance Game Developer</div>
+                                <div class="company">Independent Projects</div>
+                            </div>
+                            <div class="duration">5 Months</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Developed rapid prototypes for testing innovative gameplay mechanics and concepts</li>
+                                <li>Integrated external assets including 3D models, animations, and audio files into game projects</li>
+                                <li>Collaborated with clients to deliver custom game solutions and interactive experiences</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Portfolio Links</h3>
+                    <p style="margin-bottom: 15px;">
+                        <strong>GitHub:</strong> <a href="https://github.com/nikson141" target="_blank" style="color: #3498db;">https://github.com/nikson141</a>
+                    </p>
+                    <p>
+                        <strong>Itch.io:</strong> <a href="https://ghostdev-20.itch.io/" target="_blank" style="color: #3498db;">https://ghostdev-20.itch.io/</a>
+                    </p>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
